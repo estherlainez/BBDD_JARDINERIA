@@ -13,6 +13,8 @@ public class mainJardineria {
 	public static void main(String[] args) throws SQLException {
 		// TODO Auto-generated method stub
 		Scanner teclado= new Scanner(System.in);
+
+		int opcion=0;
 		
 		try {
 		
@@ -20,7 +22,7 @@ public class mainJardineria {
 		ConexionJardineria cn=new ConexionJardineria();
 		String sql;
 		
-		
+		do {
 		System.out.println("MENU");
 		System.out.println("1. Consultar los productos que tenemos");
 		System.out.println("2. Consultar los pedidos y el detalle de pedido segun el cliente por teclado");
@@ -29,13 +31,12 @@ public class mainJardineria {
 		System.out.println("5. Borrar clientes");
 		System.out.println("6. Salir");
 		System.out.println("Introduzca opcion");
-		
-		int opcion=teclado.nextInt();
-			do {
+		opcion=teclado.nextInt();
+			
 				switch(opcion) {
 				case 1:
 					
-					sql="select * from gamasproductos";
+					sql="select * from productos";
 					//ConexionJardineria.Select(sql);
 					ConexionJardineria.mostrar(sql);
 					
@@ -48,8 +49,8 @@ public class mainJardineria {
 				
 					break;
 				case 3:
-					
-					ConexionJardineria.Insertar();
+					sql= "INSERT INTO oficinas VALUES('BCN-ES','TARAZONA','ESPAÑA','ARAGON','50500','653412345','AVENIDA DE LA PAZ','TERRESA CAJAL';)";
+					ConexionJardineria.InsertarRegistro(sql);
 					
 					break;
 				case 4:

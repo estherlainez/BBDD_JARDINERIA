@@ -38,8 +38,10 @@ public class ConexionJardineria {
 			 */
 			Properties propiedades = new Properties ();
 			propiedades.load(new FileInputStream
-			
-			("C:/Users/Esther/eclipse-workspace/UD12PR_BBDD_JARDINERIA_MYSQL/src/propiedadesJardineria/configuration.properties"));
+			//ruta en el pc de clase
+			("C:/Users/IFC/git/BBDD_JARDINERIA/src/propiedadesJardineria/configuration.properties"));
+			//Ruta en el pc de casa
+			//("C:/Users/Esther/eclipse-workspace/UD12PR_BBDD_JARDINERIA_MYSQL/src/propiedadesJardineria/configuration.properties"));
 			servidor = propiedades.getProperty("dataBaseServer");
 			bbdd = propiedades.getProperty("dataBaseCatalog");
 			usuario = propiedades.getProperty("dataBaseUser");
@@ -80,7 +82,6 @@ public class ConexionJardineria {
 	
 	
 	public static void mostrar(String sql) throws SQLException {
-		conector= DriverManager.getConnection(servidor+bbdd,usuario,password);
 		Statement st;
 		ResultSet rs;
 		try {
@@ -94,24 +95,28 @@ public class ConexionJardineria {
 				
 			}
 			
-			rs.close();
-			st.close();
-			conector.close();
+			
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	
+	public static void InsertarRegistro (String sql) {
+		try {
+			
+			Statement miStatement = conector.createStatement();
+			miStatement.executeUpdate(sql);
+			
+		}catch(Exception e) {
+			System.out.println("No es posible conectar");
+		}
+	}
 
 
-	public static void Insertar () throws SQLException {
-		conector= DriverManager.getConnection(servidor+bbdd,usuario,password);
+	public static void Insertar (String sql)  {
+		
 		Scanner teclado=new Scanner(System.in);
-		
-		
-		System.out.println("Introduzca CodigoCliente" );
-		int codCli=teclado.nextInt();
+		/*
 		teclado.nextLine();
 		System.out.println("Introduzca NombreCliente" );
 		String nombre=teclado.nextLine();
@@ -125,18 +130,19 @@ public class ConexionJardineria {
 		String fax=teclado.nextLine();
 		System.out.println("Introduzca direccion" );
 		String direccion=teclado.nextLine();
-		
+		*/
 		Statement ms;
 		
-		String sql = "INSERT INTO clientes('CodigoCliente','NombreCliente',,'NombreContacto','ApellidoContacto','Telefono','Fax','LineaDireccion1') "
-				+ "VALUES ( codCli, '"+nombre+"','"+nombreCon+"', '"+apellido+"','"+telefono+"','"+fax+"', '"+direccion+"')";
+		
+		
+		System.out.println(sql);
+		
 		try {
 			 ms= conector.createStatement();
 			
 			 ms.executeUpdate(sql);
 			 System.out.println(sql+ "\n"); 
-			 ms.close();
-			 conector.close();
+			
 		}catch(SQLException e) {
 			System.out.println("no Conecta");
 			e.printStackTrace();
@@ -144,15 +150,13 @@ public class ConexionJardineria {
 	}
 	
 	
-	public static void modificar() throws SQLException {
-		conector= DriverManager.getConnection(servidor+bbdd,usuario,password);
+	public static void modificar()  {
+		
 		Scanner teclado= new Scanner(System.in);
 		Statement st;
 		System.out.println("Introduzca el NombreCliente de la fila a modificar");
 		String nombreModificar= teclado.nextLine();
-		System.out.println("Introduzca CodigoCliente" );
-		int codCli=teclado.nextInt();
-		teclado.nextLine();
+
 		System.out.println("Introduzca NombreCliente" );
 		String nombre=teclado.nextLine();
 		System.out.println("Introduzca NombreContacto" );
@@ -166,7 +170,7 @@ public class ConexionJardineria {
 		System.out.println("Introduzca direccion" );
 		String direccion=teclado.nextLine();
 		
-		String sql="update clientes set CodigoCliente=codCli, '"+nombre+"','"+nombreCon+"', '"+apellido+"','"+telefono+"','"+fax+"', '"+direccion+"' where NombreCliente="+nombreModificar;
+		String sql="update clientes set  '"+nombre+"','"+nombreCon+"', '"+apellido+"','"+telefono+"','"+fax+"', '"+direccion+"' where CodigoCliente="+nombreModificar;
 		try {
 			st=conector.createStatement();
 			int confirmar=st.executeUpdate(sql);
@@ -175,8 +179,7 @@ public class ConexionJardineria {
 			}else {
 				System.out.println("No Modificado....");
 			}
-			st.close();
-			conector.close();
+			
 		}catch(SQLException e) {
 			e.getMessage();
 		}catch(Exception e) {
@@ -186,9 +189,9 @@ public class ConexionJardineria {
 		
 		
 	}
-	public static void  borrarDatos() throws SQLException {
+	public static void  borrarDatos() {
 		Scanner teclado=new Scanner(System.in);
-		conector= DriverManager.getConnection(servidor+bbdd,usuario,password);
+		
 		
 		System.out.println("Inserte el nombre del cliente a borrar");
 		String nombreBorrar=teclado.nextLine();
@@ -206,8 +209,7 @@ public class ConexionJardineria {
 				System.out.println("El registro no se pudo eliminar");
 			}
 			
-			st.close();
-			conector.close();
+			
 		}catch(Exception e) {
 			System.out.println("No conecta");
 			e.printStackTrace();
