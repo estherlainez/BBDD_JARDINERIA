@@ -109,6 +109,7 @@ public class ConexionJardineria {
 			
 		}catch(Exception e) {
 			System.out.println("No es posible conectar");
+			e.printStackTrace();
 		}
 	}
 
@@ -154,9 +155,9 @@ public class ConexionJardineria {
 		
 		Scanner teclado= new Scanner(System.in);
 		Statement st;
-		System.out.println("Introduzca el NombreCliente de la fila a modificar");
-		String nombreModificar= teclado.nextLine();
-
+		System.out.println("Introduzca el CodigoCliente de la fila a modificar");
+		int codigo= teclado.nextInt();
+		teclado.nextLine();
 		System.out.println("Introduzca NombreCliente" );
 		String nombre=teclado.nextLine();
 		System.out.println("Introduzca NombreContacto" );
@@ -170,7 +171,9 @@ public class ConexionJardineria {
 		System.out.println("Introduzca direccion" );
 		String direccion=teclado.nextLine();
 		
-		String sql="update clientes set  '"+nombre+"','"+nombreCon+"', '"+apellido+"','"+telefono+"','"+fax+"', '"+direccion+"' where CodigoCliente="+nombreModificar;
+		String sql="update clientes Set NombreCliente= '"+nombre+"',NombreContacto= '"+nombreCon+"',ApellidoContacto= '"+apellido+"',Telefono='"+telefono+"',Fax='"+fax+"', Direccion'"+direccion+" where CodigoCliente='"+codigo+"'";
+		
+		System.out.println(sql+ "\n"); 
 		try {
 			st=conector.createStatement();
 			int confirmar=st.executeUpdate(sql);
@@ -193,11 +196,11 @@ public class ConexionJardineria {
 		Scanner teclado=new Scanner(System.in);
 		
 		
-		System.out.println("Inserte el nombre del cliente a borrar");
-		String nombreBorrar=teclado.nextLine();
+		System.out.println("Inserte el codigo del cliente a borrar");
+		int codigoBorrar = teclado.nextInt();
 		
 		Statement st;
-		String sql= "DELETE FROM CLIENTES WHERE NombreContacto= "+nombreBorrar+"";
+		String sql= "DELETE FROM CLIENTES WHERE CodigoCliente= "+codigoBorrar+"";
 		try {
 			st= conector.createStatement();
 			

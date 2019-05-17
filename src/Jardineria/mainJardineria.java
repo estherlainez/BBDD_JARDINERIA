@@ -49,7 +49,8 @@ public class mainJardineria {
 				
 					break;
 				case 3:
-					sql= "INSERT INTO oficinas VALUES('BCN-ES','TARAZONA','ESPAÑA','ARAGON','50500','653412345','AVENIDA DE LA PAZ','TERRESA CAJAL';)";
+					sql= "INSERT INTO oficinas VALUES('TRZ-ES','TARAZONA','ESPAÑA','ARAGON','50500','653412345','AVENIDA DE LA PAZ','TERRESA CAJAL');";
+					System.out.println(sql);
 					ConexionJardineria.InsertarRegistro(sql);
 					
 					break;
