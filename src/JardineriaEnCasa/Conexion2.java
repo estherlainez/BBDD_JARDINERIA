@@ -18,8 +18,10 @@ public class Conexion2 {
 			try {
 				/*Cargamos el archivo desde la ruta especificada*/
 				Properties propiedades = new Properties ();
-				propiedades.load(new FileInputStream("C:/Users/Esther/git/BBDD_JARDINERIA/src/configuration/properties"));
+				//propiedades.load(new FileInputStream("C:/Users/Esther/git/BBDD_JARDINERIA/src/configuration/properties"));
 			
+				propiedades.load(new FileInputStream
+						("C:/Users/IFC/git/BBDD_JARDINERIA/src/configuration/properties"));
 				this.servidor = propiedades.getProperty("dataBaseServer");
 				this.usuario = propiedades.getProperty("dataBaseUser");
 				this.password = propiedades.getProperty("dataBasePassword");
