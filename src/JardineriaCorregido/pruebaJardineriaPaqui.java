@@ -72,7 +72,7 @@ public class pruebaJardineriaPaqui {
 								
 								int codigoCliente=teclado.nextInt();
 								sentencia.setInt(1, codigoCliente);
-								
+								teclado.nextLine();
 								System.out.println("\n Inserte nombreCliente:");
 								String nombreCliente=teclado.nextLine();
 								sentencia.setString(2, nombreCliente);
