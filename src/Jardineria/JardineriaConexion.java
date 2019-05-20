@@ -30,10 +30,6 @@ public class JardineriaConexion {
 	
 	
 	
-	
-	
-	
-	
 	public static void leerArchivo() {
 		try {
 			Properties propiedades = new Properties();
@@ -53,15 +49,6 @@ public class JardineriaConexion {
 			System.out.println("Error, no se puede leer el archivo");
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	

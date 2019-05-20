@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 
+
 public class mainJardineria {
 
 	public static void main(String[] args) throws SQLException {
@@ -17,8 +18,8 @@ public class mainJardineria {
 		int opcion=0;
 		
 		try {
-		
-				
+
+			
 		ConexionJardineria cn=new ConexionJardineria();
 		String sql;
 		
@@ -49,9 +50,14 @@ public class mainJardineria {
 				
 					break;
 				case 3:
-					sql= "INSERT INTO oficinas VALUES('TRZ-ES','TARAZONA','ESPAÑA','ARAGON','50500','653412345','AVENIDA DE LA PAZ','TERRESA CAJAL');";
+					/*sql= "INSERT INTO oficinas VALUES('TRZ-ES','TARAZONA','ESPAÑA','ARAGON','50500','653412345','AVENIDA DE LA PAZ','TERRESA CAJAL');";
 					System.out.println(sql);
 					ConexionJardineria.InsertarRegistro(sql);
+					
+					sql="INSERT INTO clientes (CodigoCliente, NombreCliente,NombreContacto, ApellidoContacto, Telefono, Fax, LineaDireccion1, LineaDireccion2, Ciudad, Region, Pais, CodigoPostal, CodigoEmpleadoRepVentas,LimiteCredito) VALUES (81,'Jardines Lainez', 'Esther', 'Lainez', '666558844', '976554455', 'MI CASA, 12', NULL, 'TARAZONA', 'ARAGON', 'ESPAÑA', '50500', '1', '10');";
+					Conexion.Insert(sql);*/
+					ConexionJardineria.InsertarTeclado();
+					ConexionJardineria.Select("select * from clientes");
 					
 					break;
 				case 4:

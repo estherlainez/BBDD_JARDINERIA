@@ -2,6 +2,7 @@ package Jardineria;
 import java.io.*;
 import java.sql.*;
 import java.util.*;
+
 /*
  * MUY IMPORTANTEEEEEEE
  * VERIFICAR LA RUTA DONDE SE ENCUENTRA EL ARCHIVO	
@@ -15,6 +16,8 @@ public class ConexionJardineria {
 	
 	static Connection conector;
 	
+	
+
 	public ConexionJardineria (){
 		try {
 			this.leerArchivo();
@@ -35,7 +38,7 @@ public class ConexionJardineria {
 			 * MUY IMPORTANTEEEEEEE
 			 * VERIFICAR LA RUTA DONDE SE ENCUENTRA EL ARCHIVO	
 			 * Y SI NO NO CONECTA......	
-			 */
+			*/
 			Properties propiedades = new Properties ();
 			propiedades.load(new FileInputStream
 			//ruta en el pc de clase
@@ -57,7 +60,7 @@ public class ConexionJardineria {
 		}
 		
 	}	
-	
+
 	
 	
 	public static void Select (String sql) {
@@ -114,10 +117,12 @@ public class ConexionJardineria {
 	}
 
 
-	public static void Insertar (String sql)  {
+	public static void InsertarTeclado ()  {
 		
 		Scanner teclado=new Scanner(System.in);
-		/*
+		
+	 	System.out.println("Introduzca CodigoCliente" );
+		int codigo=teclado.nextInt();
 		teclado.nextLine();
 		System.out.println("Introduzca NombreCliente" );
 		String nombre=teclado.nextLine();
@@ -129,12 +134,28 @@ public class ConexionJardineria {
 		String telefono=teclado.nextLine();
 		System.out.println("Introduzca Fax" );
 		String fax=teclado.nextLine();
-		System.out.println("Introduzca direccion" );
+		System.out.println("Introduzca direccion1" );
 		String direccion=teclado.nextLine();
-		*/
+		System.out.println("Introduzca direccion2" );
+		String direccion2=teclado.nextLine();
+		System.out.println("Introduzca ciudad" );
+		String ciudad=teclado.nextLine();
+		System.out.println("Introduzca region" );
+		String region=teclado.nextLine();
+		System.out.println("Introduzca pais" );
+		String pais=teclado.nextLine();
+		System.out.println("Introduzca codigo postal" );
+		String cp=teclado.nextLine();
+		System.out.println("Introduzca codigo empleado de ventas" );
+		int empVentas=teclado.nextInt();
+		System.out.println("Introduzca limite credito" );
+		double limiteCredito=teclado.nextDouble();
+		
+	
+		String sql="INSERT INTO clientes (CodigoCliente, NombreCliente,NombreContacto, ApellidoContacto, Telefono, Fax, LineaDireccion1, LineaDireccion2, Ciudad, Region, Pais, CodigoPostal, CodigoEmpleadoRepVentas,LimiteCredito) VALUES (codigo,'nombre', 'nombreCon', 'apellido', 'telefono', 'fax', 'direccion', direccion2, 'ciudad', 'region', 'pais', 'cp', 'empVentas', 'limiteCredito');";
+		
+		
 		Statement ms;
-		
-		
 		
 		System.out.println(sql);
 		

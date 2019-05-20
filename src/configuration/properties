@@ -1,0 +1,8 @@
+# DataBase Server
+dataBaseServer=jdbc:mysql://localhost:3306/jardineria?autoReconnect=true&useSSL=false
+ 
+# DataBase User
+dataBaseUser=root
+ 
+# DataBase Password
+dataBasePassword=12345678
