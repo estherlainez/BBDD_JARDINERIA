@@ -88,80 +88,77 @@ public class Conexion2 {
 	}
 	
 	
-	
-public static void InsertarTeclado ()  {
+	public static void InsertarTeclado (String sql) {
 		Scanner teclado= new Scanner(System.in);
-	String sql="INSERT INTO clientes  VALUES (?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?);";
-	try {
-		PreparedStatement sentencia=conector.prepareStatement(sql);
-		System.out.println("\n Inserte codigoCliente:");
-		
-		int codigoCliente=teclado.nextInt();
-		sentencia.setInt(1, codigoCliente);
-		teclado.nextLine();
-		System.out.println("\n Inserte nombreCliente:");
-		String nombreCliente=teclado.nextLine();
-		sentencia.setString(2, nombreCliente);
-		
-		System.out.println("\n Inserte nombreContacto:");
-		String nombreCon=teclado.nextLine();
-		sentencia.setString(3, nombreCon);
-		
-		System.out.println("\n Inserte apellido:");
-		String apellido=teclado.nextLine();
-		sentencia.setString(4, apellido);
-		
-		System.out.println("\n Inserte telefono:");
-		String telefono=teclado.nextLine();
-		sentencia.setString(5, telefono);
-		
-		System.out.println("\n Inserte fax:");
-		String fax=teclado.nextLine();
-		sentencia.setString(6, fax);
-		
-		System.out.println("\n Inserte direccion 1:");
-		String dir1=teclado.nextLine();
-		sentencia.setString(7, dir1);
-		
-		System.out.println("\n Inserte direccion 2:");
-		String dir2=teclado.nextLine();
-		sentencia.setString(8, dir2);
-		
-		System.out.println("\n Inserte ciudad:");
-		String ciudad=teclado.nextLine();
-		sentencia.setString(9, ciudad);
-		
-		System.out.println("\n Inserte region:");
-		String region=teclado.nextLine();
-		sentencia.setString(10, region);
-		
-		System.out.println("\n Inserte pais:");
-		String pais=teclado.nextLine();
-		sentencia.setString(11, pais);
-		
-		System.out.println("\n Inserte codigo Postal:");
-		String cp=teclado.nextLine();
-		sentencia.setString(12, cp);
-		
-		System.out.println("\n Inserte codigoResponsable:");
-		int resVentas=teclado.nextInt();
-		sentencia.setInt(13, resVentas);
-		
-		System.out.println("\n Inserte limite:");
-		double limite=teclado.nextDouble();
-		sentencia.setDouble(14, limite);
-		
-		//ejecuto la sentencia preparada
-		int rsp=sentencia.executeUpdate();
-		
-		
-	} catch (Exception e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
+		try {
+			PreparedStatement sentencia=conector.prepareStatement(sql);
+			System.out.println("\n Inserte codigoCliente:");
+			
+			int codigoCliente=teclado.nextInt();
+			sentencia.setInt(1, codigoCliente);
+			teclado.nextLine();
+			System.out.println("\n Inserte nombreCliente:");
+			String nombreCliente=teclado.nextLine();
+			sentencia.setString(2, nombreCliente);
+			
+			System.out.println("\n Inserte nombreContacto:");
+			String nombreCon=teclado.nextLine();
+			sentencia.setString(3, nombreCon);
+			
+			System.out.println("\n Inserte apellido:");
+			String apellido=teclado.nextLine();
+			sentencia.setString(4, apellido);
+			
+			System.out.println("\n Inserte telefono:");
+			String telefono=teclado.nextLine();
+			sentencia.setString(5, telefono);
+			
+			System.out.println("\n Inserte fax:");
+			String fax=teclado.nextLine();
+			sentencia.setString(6, fax);
+			
+			System.out.println("\n Inserte direccion 1:");
+			String dir1=teclado.nextLine();
+			sentencia.setString(7, dir1);
+			
+			System.out.println("\n Inserte direccion 2:");
+			String dir2=teclado.nextLine();
+			sentencia.setString(8, dir2);
+			
+			System.out.println("\n Inserte ciudad:");
+			String ciudad=teclado.nextLine();
+			sentencia.setString(9, ciudad);
+			
+			System.out.println("\n Inserte region:");
+			String region=teclado.nextLine();
+			sentencia.setString(10, region);
+			
+			System.out.println("\n Inserte pais:");
+			String pais=teclado.nextLine();
+			sentencia.setString(11, pais);
+			
+			System.out.println("\n Inserte codigo Postal:");
+			String cp=teclado.nextLine();
+			sentencia.setString(12, cp);
+			
+			System.out.println("\n Inserte codigoResponsable:");
+			int resVentas=teclado.nextInt();
+			sentencia.setInt(13, resVentas);
+			
+			System.out.println("\n Inserte limite:");
+			double limite=teclado.nextDouble();
+			sentencia.setDouble(14, limite);
+			
+			
+			int rsp=sentencia.executeUpdate();
+			
+			
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
 	}
-		                                                                                                                                                                                                                                                                                                                                                                                      
-	
-}
+
 	
 	
 	public static void consultasPreparadas (PreparedStatement s) {
@@ -184,88 +181,8 @@ public static void InsertarTeclado ()  {
 	}
 
 
-	public static void actualizarDatos() {
-		Scanner teclado= new Scanner(System.in);
-		System.out.println("introduce el codigo del cliente que queremos modificar");
-		int codigo=teclado.nextInt();
-        String sql =  "UPDATE clientes SET"
-                + "(CodigoCliente, NombreCliente,NombreContacto, ApellidoContacto, Telefono, Fax, LineaDireccion1, LineaDireccion2, Ciudad, Region, Pais, CodigoPostal, CodigoEmpleadoRepVentas,LimiteCredito)"
-                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?,?) WHERE id_usuario=clientes.CodigoCliente = "+codigo+";";
-       
-        int resultado;
-
-        
-        try  {
-
-        	PreparedStatement sentencia=conector.prepareStatement(sql);
-    		System.out.println("\n Inserte codigoCliente:");
-    		
-    		int codigoCliente=teclado.nextInt();
-    		sentencia.setInt(1, codigoCliente);
-    		teclado.nextLine();
-    		System.out.println("\n Inserte nombreCliente:");
-    		String nombreCliente=teclado.nextLine();
-    		sentencia.setString(2, nombreCliente);
-    		
-    		System.out.println("\n Inserte nombreContacto:");
-    		String nombreCon=teclado.nextLine();
-    		sentencia.setString(3, nombreCon);
-    		
-    		System.out.println("\n Inserte apellido:");
-    		String apellido=teclado.nextLine();
-    		sentencia.setString(4, apellido);
-    		
-    		System.out.println("\n Inserte telefono:");
-    		String telefono=teclado.nextLine();
-    		sentencia.setString(5, telefono);
-    		
-    		System.out.println("\n Inserte fax:");
-    		String fax=teclado.nextLine();
-    		sentencia.setString(6, fax);
-    		
-    		System.out.println("\n Inserte direccion 1:");
-    		String dir1=teclado.nextLine();
-    		sentencia.setString(7, dir1);
-    		
-    		System.out.println("\n Inserte direccion 2:");
-    		String dir2=teclado.nextLine();
-    		sentencia.setString(8, dir2);
-    		
-    		System.out.println("\n Inserte ciudad:");
-    		String ciudad=teclado.nextLine();
-    		sentencia.setString(9, ciudad);
-    		
-    		System.out.println("\n Inserte region:");
-    		String region=teclado.nextLine();
-    		sentencia.setString(10, region);
-    		
-    		System.out.println("\n Inserte pais:");
-    		String pais=teclado.nextLine();
-    		sentencia.setString(11, pais);
-    		
-    		System.out.println("\n Inserte codigo Postal:");
-    		String cp=teclado.nextLine();
-    		sentencia.setString(12, cp);
-    		
-    		System.out.println("\n Inserte codigoResponsable:");
-    		int resVentas=teclado.nextInt();
-    		sentencia.setInt(13, resVentas);
-    		
-    		System.out.println("\n Inserte limite:");
-    		double limite=teclado.nextDouble();
-    		sentencia.setDouble(14, limite);
-
-    		//ejecuto la sentencia preparada
-    		int rsp=sentencia.executeUpdate();
-    		
-          } catch (SQLException e) {
-            e.getMessage();
-          }
-
-      
-    }
-
-
+	
+	
 
 	
 
